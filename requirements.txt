@@ -6,3 +6,4 @@ scikit-learn==1.4.2
 tensorflow==2.18.0
 yfinance==0.2.30
 yahoo_fin==0.8.9.1
+xgboost==2.0.3
