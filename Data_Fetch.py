@@ -6,13 +6,21 @@ import yahoo_fin
 from yahoo_fin import news
 
 def get_stock_price(ticker):
+    import yfinance as yf
+
     stock = yf.Ticker(ticker)
     hist = stock.history(period="1d")
-    
-    if hist.empty:
-        return None 
-    
-    return hist["Close"].iloc[-1]
+
+    if hist is None or hist.empty:
+        print(f"[ERROR] No data found for ticker: {ticker}")
+        return None
+
+    try:
+        return hist["Close"].iloc[-1]
+    except Exception as e:
+        print(f"[ERROR] Couldn't get closing price: {e}")
+        return None
+
 
 def get_historical_data(ticker,period="max"):
     stock = yf.Ticker(ticker)
