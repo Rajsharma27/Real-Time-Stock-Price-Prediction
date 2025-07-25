@@ -7,8 +7,12 @@ from yahoo_fin import news
 
 def get_stock_price(ticker):
     stock = yf.Ticker(ticker)
-    price = stock.history(period="1d")["Close"].iloc[-1]
-    return price
+    hist = stock.history(period="1d")
+    
+    if hist.empty:
+        return None 
+    
+    return hist["Close"].iloc[-1]
 
 def get_historical_data(ticker,period="max"):
     stock = yf.Ticker(ticker)
