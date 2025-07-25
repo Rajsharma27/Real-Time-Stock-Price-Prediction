@@ -7,3 +7,4 @@ tensorflow==2.18.0
 yfinance==0.2.30
 yahoo_fin==0.8.9.1
 xgboost==2.0.3
+textblob==0.17.1
