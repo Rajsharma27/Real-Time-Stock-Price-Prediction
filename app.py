@@ -33,12 +33,15 @@ if "data" not in st.session_state:
     st.session_state.data = None
 
 if st.sidebar.button("Find Out"):
-    #fetch stock data
+    # fetch stock data
     stock = get_stock_price(selected_company)
 
     if stock is None:
-       st.error("No stock data available for the selected company.")
-       st.stop()
+        st.error("❌ No stock data available for the selected company.")
+        st.stop()
+
+    # Everything that uses 'stock' goes here...
+
     data = get_historical_data(selected_company)
 
     st.session_state.data = data
